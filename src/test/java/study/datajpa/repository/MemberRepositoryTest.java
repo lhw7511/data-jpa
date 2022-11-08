@@ -142,4 +142,20 @@ class MemberRepositoryTest {
         }
     }
 
+    @Test
+    public void returnType(){
+        Member m1 = new Member("aaa",10);
+        Member m2 = new Member("bbb",20);
+
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        //List<Member> aaa = memberRepository.findListByUsername("aaa");
+        //Member findMember = memberRepository.findMemberByUsername("aaa");
+        Optional<Member> aaa = memberRepository.findOptionalByUsername("aaa");
+        System.out.println(aaa.get());
+        List<Member> emptyCollection = memberRepository.findListByUsername("asdfasdf");
+        System.out.println(emptyCollection.size());
+    }
+
 }
